@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "common.h"
 
 using namespace std;
 
@@ -34,20 +35,34 @@ int main(int argc, char const *argv[]) {
   }
 
   addr.sin_family = AF_INET;
-  addr.sin_port = htons(22222);
+  addr.sin_port = htons(PORT);
   addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
   connect(sd, (struct sockaddr*)&addr, sizeof(struct sockaddr_in));
 
-  puts("send...");
+  string str;
 
-  if (send(sd, "I am send process", 17, 0) < 0) {
-    perror("send");
-    return -1;
+  while (true) {
+    str = "";
+
+    cout << "> ";
+    cin >> str;
+
+    if (str.length() == 0) {
+      break;
+    }
+
+    str += '\n';
+
+    if (send(sd, str.c_str(), str.length(), 0) < 0) {
+      perror("send");
+      exit(EXIT_FAILURE);
+    }
   }
 
   close(sd);
 
+  cout << endl;
 
   return 0;
 }
