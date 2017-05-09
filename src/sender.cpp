@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "common.h"
+#include "types/data.h"
 
 #include "sender.h"
 
@@ -56,7 +57,15 @@ void Sender::start() {
 
     int read_len = after_pos - pos;
 
-    this->send(buf, read_len);
+    // -- make packet
+    Data data(buf, read_len);
+    // -- make packet
+
+    char *bytes;
+    int len;
+    data.serialize(&bytes, &len);
+
+    this->send(bytes, len);
 
     pos = after_pos;
   }

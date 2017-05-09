@@ -1,5 +1,6 @@
 client
 server
-CMakeFiles/
+CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
+*.a

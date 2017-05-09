@@ -136,6 +136,19 @@ client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
 
+#=============================================================================
+# Target rules for targets named types
+
+# Build rule for target.
+types: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 types
+.PHONY : types
+
+# fast build rule for target.
+types/fast:
+	$(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/build
+.PHONY : types/fast
+
 src/client.o: src/client.cpp.o
 
 .PHONY : src/client.o
@@ -254,6 +267,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... server"
 	@echo "... client"
+	@echo "... types"
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
