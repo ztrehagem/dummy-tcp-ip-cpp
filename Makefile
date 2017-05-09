@@ -163,6 +163,60 @@ src/client.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/client.cpp.s
 .PHONY : src/client.cpp.s
 
+src/receiver.o: src/receiver.cpp.o
+
+.PHONY : src/receiver.o
+
+# target to build an object file
+src/receiver.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.o
+.PHONY : src/receiver.cpp.o
+
+src/receiver.i: src/receiver.cpp.i
+
+.PHONY : src/receiver.i
+
+# target to preprocess a source file
+src/receiver.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.i
+.PHONY : src/receiver.cpp.i
+
+src/receiver.s: src/receiver.cpp.s
+
+.PHONY : src/receiver.s
+
+# target to generate assembly for a file
+src/receiver.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.s
+.PHONY : src/receiver.cpp.s
+
+src/sender.o: src/sender.cpp.o
+
+.PHONY : src/sender.o
+
+# target to build an object file
+src/sender.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.o
+.PHONY : src/sender.cpp.o
+
+src/sender.i: src/sender.cpp.i
+
+.PHONY : src/sender.i
+
+# target to preprocess a source file
+src/sender.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.i
+.PHONY : src/sender.cpp.i
+
+src/sender.s: src/sender.cpp.s
+
+.PHONY : src/sender.s
+
+# target to generate assembly for a file
+src/sender.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.s
+.PHONY : src/sender.cpp.s
+
 src/server.o: src/server.cpp.o
 
 .PHONY : src/server.o
@@ -203,6 +257,12 @@ help:
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
+	@echo "... src/receiver.o"
+	@echo "... src/receiver.i"
+	@echo "... src/receiver.s"
+	@echo "... src/sender.o"
+	@echo "... src/sender.i"
+	@echo "... src/sender.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"
