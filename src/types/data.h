@@ -1,17 +1,25 @@
 #pragma once
 
+#include <string>
+#include "layer2.h"
+#include "serializable.h"
+
+using namespace std;
 
 
-class Data {
+
+class Data : public Serializable {
 
 public:
   static const int MAX_SIZE;
 
-  Data(char *bytes, unsigned int len);
+  Data(const char *bytes, const unsigned int len);
+  Data(Layer2 layer2);
   ~Data();
-  void preview();
-  void serialize(char **bytes, int *len);
-  static Data parse(char *bytes, int len);
+  void preview() const;
+  Serial *serialize() const;
+  Layer2 *pack(const Layer2::Type type);
+  string to_str();
 
 private:
   char *bytes;

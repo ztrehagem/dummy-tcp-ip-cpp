@@ -3,6 +3,7 @@
 #include <string>
 #include <netinet/in.h>
 #include "common.h"
+#include "types/layer2.h"
 
 using namespace std;
 
@@ -19,5 +20,7 @@ private:
   struct sockaddr_in addr;
   int sd;
 
-  void send(char *data, int len);
+  Serial *create_packet(const char *data, const unsigned int len, const Layer2::Type type);
+  void send(const Serial *packet);
+  void send(const char *data, const size_t len);
 };

@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string>
+#include "layer2.h"
+#include "dtcp.h"
 
 #include "data.h"
 
@@ -8,7 +11,7 @@ using namespace std;
 
 const int Data::MAX_SIZE = 1024;
 
-Data::Data(char *bytes, unsigned int len) {
+Data::Data(const char *bytes, const unsigned int len) {
   if (len > Data::MAX_SIZE) {
     throw "over size";
   }
@@ -23,17 +26,31 @@ Data::~Data() {
   }
 }
 
-void Data::preview() {
+void Data::preview() const {
   cout << "len: " << this->len << endl;
   cout << this->bytes << endl;
 }
 
-void Data::serialize(char **bytes, int *len) {
-  *bytes = this->bytes;
-  *len = this->len;
+Serial *Data::serialize() const {
+  return new Serial(this->bytes, this->len);
 }
 
-Data Data::parse(char *bytes, int len) {
-  Data data(bytes, len);
-  return data;
+Layer2 *Data::pack(const Layer2::Type type) {
+  switch (type) {
+    case Layer2::DTCP: return new Dtcp(*this);
+    case Layer2::DUDP: return new Dtcp(*this);
+  }
+  // switch (type) {
+  //   case Layer2::DTCP:
+  //   Dtcp dtcp(*this);
+  //   return dtcp;
+  //
+  //   case Layer2::DUDP:
+  //   Dtcp dtcp(*this);
+  //   return dtcp;
+  // }
+}
+
+string Data::to_str() {
+  return string(this->bytes, this->len);
 }

@@ -152,6 +152,87 @@ data.cpp.s:
 	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/data.cpp.s
 .PHONY : data.cpp.s
 
+dip.o: dip.cpp.o
+
+.PHONY : dip.o
+
+# target to build an object file
+dip.cpp.o:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dip.cpp.o
+.PHONY : dip.cpp.o
+
+dip.i: dip.cpp.i
+
+.PHONY : dip.i
+
+# target to preprocess a source file
+dip.cpp.i:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dip.cpp.i
+.PHONY : dip.cpp.i
+
+dip.s: dip.cpp.s
+
+.PHONY : dip.s
+
+# target to generate assembly for a file
+dip.cpp.s:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dip.cpp.s
+.PHONY : dip.cpp.s
+
+dtcp.o: dtcp.cpp.o
+
+.PHONY : dtcp.o
+
+# target to build an object file
+dtcp.cpp.o:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dtcp.cpp.o
+.PHONY : dtcp.cpp.o
+
+dtcp.i: dtcp.cpp.i
+
+.PHONY : dtcp.i
+
+# target to preprocess a source file
+dtcp.cpp.i:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dtcp.cpp.i
+.PHONY : dtcp.cpp.i
+
+dtcp.s: dtcp.cpp.s
+
+.PHONY : dtcp.s
+
+# target to generate assembly for a file
+dtcp.cpp.s:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dtcp.cpp.s
+.PHONY : dtcp.cpp.s
+
+serial.o: serial.cpp.o
+
+.PHONY : serial.o
+
+# target to build an object file
+serial.cpp.o:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/serial.cpp.o
+.PHONY : serial.cpp.o
+
+serial.i: serial.cpp.i
+
+.PHONY : serial.i
+
+# target to preprocess a source file
+serial.cpp.i:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/serial.cpp.i
+.PHONY : serial.cpp.i
+
+serial.s: serial.cpp.s
+
+.PHONY : serial.s
+
+# target to generate assembly for a file
+serial.cpp.s:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/serial.cpp.s
+.PHONY : serial.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -164,6 +245,15 @@ help:
 	@echo "... data.o"
 	@echo "... data.i"
 	@echo "... data.s"
+	@echo "... dip.o"
+	@echo "... dip.i"
+	@echo "... dip.s"
+	@echo "... dtcp.o"
+	@echo "... dtcp.i"
+	@echo "... dtcp.s"
+	@echo "... serial.o"
+	@echo "... serial.i"
+	@echo "... serial.s"
 .PHONY : help
 
 

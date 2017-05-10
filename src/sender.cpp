@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "common.h"
+#include "types/serial.h"
 #include "types/data.h"
 
 #include "sender.h"
@@ -37,7 +38,7 @@ void Sender::start() {
     return;
   }
 
-  char buf[1024];
+  char buf[Data::MAX_SIZE];
 
   file.seekg(0, ifstream::end);
   const int end_pos = file.tellg();
@@ -51,21 +52,16 @@ void Sender::start() {
     file.read(buf, sizeof(buf));
 
     int after_pos = file.tellg();
-    if (after_pos == -1) {
+    if (after_pos < 0) {
       after_pos = end_pos;
     }
 
-    int read_len = after_pos - pos;
+    const unsigned int read_len = after_pos - pos;
 
     // -- make packet
-    Data data(buf, read_len);
-    // -- make packet
-
-    char *bytes;
-    int len;
-    data.serialize(&bytes, &len);
-
-    this->send(bytes, len);
+    Serial *packet = this->create_packet(buf, read_len, Layer2::DTCP);
+    this->send(packet);
+    delete packet;
 
     pos = after_pos;
   }
@@ -74,7 +70,23 @@ void Sender::start() {
 
 // -- private
 
-void Sender::send(char *bytes, int len) {
+Serial *Sender::create_packet(const char* bytes, const unsigned int len, const Layer2::Type type) {
+  Data data(bytes, len);
+  Layer2 *layer2 = data.pack(type);
+  Layer1 *layer1 = layer2->pack();
+  Serial *serial = layer1->serialize();
+
+  delete layer2;
+  delete layer1;
+
+  return serial;
+}
+
+void Sender::send(const Serial *packet) {
+  this->send(packet->get_bytes(), packet->get_len());
+}
+
+void Sender::send(const char *bytes, const size_t len) {
   this->sd = ::socket(AF_INET, SOCK_STREAM, 0);
 
   if (this->sd < 0) {

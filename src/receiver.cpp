@@ -3,6 +3,10 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include "common.h"
+#include "types/data.h"
+#include "types/layer2.h"
+#include "types/dip.h"
+#include "types/layer1.h"
 
 #include "receiver.h"
 
@@ -70,7 +74,7 @@ void Receiver::accept() {
 }
 
 void Receiver::recv(const int sd) {
-  char buf[1024];
+  char buf[2048];
 
   cout << "*** connected ***" << endl;
 
@@ -88,6 +92,14 @@ void Receiver::recv(const int sd) {
     }
 
     cout << buf << endl;
+
+    // Dip dip(buf, len);
+    // Layer2 layer2 = dip.unpack();
+    // Data data(layer2);
+    //
+    // cout << data
+    //
+    // delete layer2;
   }
 
   cout << "*** closed ***" << endl;
