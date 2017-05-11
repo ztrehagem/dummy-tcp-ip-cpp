@@ -72,8 +72,10 @@ void Sender::start() {
 
 Serial *Sender::create_packet(const char* bytes, const unsigned int len, const Layer2::Type type) {
   Data data(bytes, len);
-  Layer2 *layer2 = data.pack(type);
-  Layer1 *layer1 = layer2->pack();
+  // Layer2 *layer2 = data.pack(type);
+  Layer2 *layer2 = new Dtcp(data);
+  // Layer1 *layer1 = layer2->pack();
+  Layer1 *layer1 = new Dip(*layer2);
   Serial *serial = layer1->serialize();
 
   delete layer2;

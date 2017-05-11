@@ -91,15 +91,15 @@ void Receiver::recv(const int sd) {
       break;
     }
 
-    cout << buf << endl;
+    Layer1 *layer1 = new Dip(buf, len);
+    Layer2 *layer2 = layer1->extract();
+    Data *data = layer2->extract();
 
-    // Dip dip(buf, len);
-    // Layer2 layer2 = dip.unpack();
-    // Data data(layer2);
-    //
-    // cout << data
-    //
-    // delete layer2;
+    cout << data->to_str() << endl;
+
+    delete data;
+    delete layer2;
+    delete layer1;
   }
 
   cout << "*** closed ***" << endl;

@@ -1,5 +1,4 @@
 #include <iostream>
-#include "layer1.h"
 #include "dip.h"
 #include "serial.h"
 
@@ -7,12 +6,14 @@
 
 
 
-Dtcp::Dtcp(const Data &data, const unsigned int type) {
+Dtcp::Dtcp(const Data &data, const unsigned int type) : Layer2(Layer2::DTCP) {
   this->payload = data.serialize();
   this->type = type;
 }
-Dtcp::Dtcp(char *bytes, unsigned int len) {
+Dtcp::Dtcp(const Serial *bytes) {
   // parse
+  this->payload = new Serial(bytes->get_bytes(), bytes->get_len());
+  this->type = 1;
 }
 Dtcp::~Dtcp() {
   if (this->payload) {
@@ -22,6 +23,9 @@ Dtcp::~Dtcp() {
 
 Layer1 *Dtcp::pack() const {
   return new Dip(*this);
+}
+Data *Dtcp::extract() const {
+  return new Data(this->payload);
 }
 Serial *Dtcp::serialize() const {
   // concat header

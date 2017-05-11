@@ -3,7 +3,6 @@
 class Serial {
 
 public:
-  Serial();
   Serial(const char *bytes, const unsigned int len);
   ~Serial();
   char *get_bytes() const;
@@ -11,6 +10,6 @@ public:
 
 private:
   char *bytes;
-  const int len;
+  const unsigned int len;
 
 };

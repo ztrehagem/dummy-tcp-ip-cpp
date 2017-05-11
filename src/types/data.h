@@ -1,8 +1,10 @@
 #pragma once
 
 #include <string>
-#include "layer2.h"
+#include "serial.h"
 #include "serializable.h"
+// class Layer2;
+// #include "layer2.h"
 
 using namespace std;
 
@@ -14,15 +16,13 @@ public:
   static const int MAX_SIZE;
 
   Data(const char *bytes, const unsigned int len);
-  Data(Layer2 layer2);
+  Data(const Serial *bytes);
   ~Data();
   void preview() const;
   Serial *serialize() const;
-  Layer2 *pack(const Layer2::Type type);
   string to_str();
 
 private:
-  char *bytes;
-  unsigned int len;
+  Serial *payload;
 
 };

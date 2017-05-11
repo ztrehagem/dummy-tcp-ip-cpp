@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "layer2.h"
 #include "dtcp.h"
 
 #include "data.h"
@@ -15,24 +14,28 @@ Data::Data(const char *bytes, const unsigned int len) {
   if (len > Data::MAX_SIZE) {
     throw "over size";
   }
-  this->bytes = new char[len];
-  memcpy(this->bytes, bytes, len);
-  this->len = len;
+  this->payload = new Serial(bytes, len);
+}
+
+Data::Data(const Serial *bytes) {
+  // parse
+  if (bytes->get_len() > Data::MAX_SIZE) {
+    throw "over size";
+  }
+  this->payload = new Serial(bytes->get_bytes(), bytes->get_len());
 }
 
 Data::~Data() {
-  if (this->bytes) {
-    delete[] this->bytes;
-  }
+  delete this->payload;
 }
 
 void Data::preview() const {
-  cout << "len: " << this->len << endl;
-  cout << this->bytes << endl;
+  cout << "len: " << this->payload->get_len() << endl;
+  cout << this->payload->get_bytes() << endl;
 }
 
 Serial *Data::serialize() const {
-  return new Serial(this->bytes, this->len);
+  return new Serial(this->payload->get_bytes(), this->payload->get_len());
 }
 
 Layer2 *Data::pack(const Layer2::Type type) {
@@ -40,17 +43,8 @@ Layer2 *Data::pack(const Layer2::Type type) {
     case Layer2::DTCP: return new Dtcp(*this);
     case Layer2::DUDP: return new Dtcp(*this);
   }
-  // switch (type) {
-  //   case Layer2::DTCP:
-  //   Dtcp dtcp(*this);
-  //   return dtcp;
-  //
-  //   case Layer2::DUDP:
-  //   Dtcp dtcp(*this);
-  //   return dtcp;
-  // }
 }
 
 string Data::to_str() {
-  return string(this->bytes, this->len);
+  return string(this->payload->get_bytes(), this->payload->get_len());
 }

@@ -2,9 +2,7 @@
 
 #include "serial.h"
 
-Serial::Serial() : len(0) {
 
-}
 
 Serial::Serial(const char *bytes, const unsigned int len) : len(len) {
   this->bytes = new char[len];

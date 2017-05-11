@@ -10,10 +10,11 @@ class Dtcp : public Layer2 {
 
 public:
   Dtcp(const Data &data, const unsigned int type = 100);
-  Dtcp(char *bytes, unsigned int len);
+  Dtcp(const Serial *bytes);
   ~Dtcp();
 
   Layer1 *pack() const;
+  Data *extract() const;
   Serial *serialize() const;
   void preview() const;
 
