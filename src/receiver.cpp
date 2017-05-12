@@ -37,13 +37,13 @@ void Receiver::start() {
 // -- private
 
 void Receiver::listen() {
-  sd = socket(AF_INET, SOCK_STREAM, 0);
+  sd = ::socket(AF_INET, SOCK_STREAM, 0);
 
   if (sd < 0) {
     throw "socket";
   }
 
-  if (bind(sd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+  if (::bind(sd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
     throw "bind";
   }
 
