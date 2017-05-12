@@ -10,7 +10,7 @@ Dtcp::Dtcp(const Data &data, const unsigned int type) : Layer2(Layer2::DTCP) {
   this->payload = data.serialize();
   this->type = type;
 }
-Dtcp::Dtcp(const Serial *bytes) {
+Dtcp::Dtcp(const Serial *bytes) : Layer2(Layer2::DTCP) {
   // parse
   this->payload = new Serial(bytes->get_bytes(), bytes->get_len());
   this->type = 1;
@@ -21,9 +21,6 @@ Dtcp::~Dtcp() {
   }
 }
 
-Layer1 *Dtcp::pack() const {
-  return new Dip(*this);
-}
 Data *Dtcp::extract() const {
   return new Data(this->payload);
 }

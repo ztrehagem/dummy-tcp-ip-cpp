@@ -206,6 +206,60 @@ dtcp.cpp.s:
 	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/dtcp.cpp.s
 .PHONY : dtcp.cpp.s
 
+layer1.o: layer1.cpp.o
+
+.PHONY : layer1.o
+
+# target to build an object file
+layer1.cpp.o:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer1.cpp.o
+.PHONY : layer1.cpp.o
+
+layer1.i: layer1.cpp.i
+
+.PHONY : layer1.i
+
+# target to preprocess a source file
+layer1.cpp.i:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer1.cpp.i
+.PHONY : layer1.cpp.i
+
+layer1.s: layer1.cpp.s
+
+.PHONY : layer1.s
+
+# target to generate assembly for a file
+layer1.cpp.s:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer1.cpp.s
+.PHONY : layer1.cpp.s
+
+layer2.o: layer2.cpp.o
+
+.PHONY : layer2.o
+
+# target to build an object file
+layer2.cpp.o:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer2.cpp.o
+.PHONY : layer2.cpp.o
+
+layer2.i: layer2.cpp.i
+
+.PHONY : layer2.i
+
+# target to preprocess a source file
+layer2.cpp.i:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer2.cpp.i
+.PHONY : layer2.cpp.i
+
+layer2.s: layer2.cpp.s
+
+.PHONY : layer2.s
+
+# target to generate assembly for a file
+layer2.cpp.s:
+	cd /Users/suwa/sit/2017/distributed-system/03-dummy-tcp-ip-cpp && $(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/layer2.cpp.s
+.PHONY : layer2.cpp.s
+
 serial.o: serial.cpp.o
 
 .PHONY : serial.o
@@ -251,6 +305,12 @@ help:
 	@echo "... dtcp.o"
 	@echo "... dtcp.i"
 	@echo "... dtcp.s"
+	@echo "... layer1.o"
+	@echo "... layer1.i"
+	@echo "... layer1.s"
+	@echo "... layer2.o"
+	@echo "... layer2.i"
+	@echo "... layer2.s"
 	@echo "... serial.o"
 	@echo "... serial.i"
 	@echo "... serial.s"

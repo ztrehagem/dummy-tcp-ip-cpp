@@ -10,6 +10,7 @@ class Dip : public Layer1 {
 public:
   Dip(const Layer2 &layer2, const unsigned int version = 20, const unsigned int ttl = 114514);
   Dip(Serial *bytes);
+  Dip(const char *bytes, const unsigned int len);
   ~Dip();
 
   Serial *serialize() const;
@@ -18,6 +19,7 @@ public:
 
 private:
   Serial *payload;
-  unsigned int type, version, ttl;
+  Layer2::Type type;
+  unsigned int version, ttl;
 
 };

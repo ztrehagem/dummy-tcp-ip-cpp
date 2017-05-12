@@ -13,7 +13,6 @@ public:
   Dtcp(const Serial *bytes);
   ~Dtcp();
 
-  Layer1 *pack() const;
   Data *extract() const;
   Serial *serialize() const;
   void preview() const;

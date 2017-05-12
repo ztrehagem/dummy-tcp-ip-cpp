@@ -8,6 +8,8 @@
 #include "common.h"
 #include "types/serial.h"
 #include "types/data.h"
+#include "types/layer1.h"
+#include "types/layer2.h"
 
 #include "sender.h"
 
@@ -72,10 +74,8 @@ void Sender::start() {
 
 Serial *Sender::create_packet(const char* bytes, const unsigned int len, const Layer2::Type type) {
   Data data(bytes, len);
-  // Layer2 *layer2 = data.pack(type);
-  Layer2 *layer2 = new Dtcp(data);
-  // Layer1 *layer1 = layer2->pack();
-  Layer1 *layer1 = new Dip(*layer2);
+  Layer2 *layer2 = Layer2::build(data, type);
+  Layer1 *layer1 = Layer1::build(*layer2);
   Serial *serial = layer1->serialize();
 
   delete layer2;

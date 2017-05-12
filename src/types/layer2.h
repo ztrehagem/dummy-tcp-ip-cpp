@@ -20,6 +20,8 @@ public:
   virtual Data *extract() const = 0;
   virtual void preview() const = 0;
 
+  static Layer2 *build(const Data &, const Type);
+
   const Type type;
 
 };

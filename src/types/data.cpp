@@ -38,13 +38,6 @@ Serial *Data::serialize() const {
   return new Serial(this->payload->get_bytes(), this->payload->get_len());
 }
 
-Layer2 *Data::pack(const Layer2::Type type) {
-  switch (type) {
-    case Layer2::DTCP: return new Dtcp(*this);
-    case Layer2::DUDP: return new Dtcp(*this);
-  }
-}
-
 string Data::to_str() {
   return string(this->payload->get_bytes(), this->payload->get_len());
 }
