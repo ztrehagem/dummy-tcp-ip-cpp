@@ -10,15 +10,15 @@ Serial::Serial(const char *bytes, const unsigned int len) : len(len) {
 }
 
 Serial::~Serial() {
-  if (this->bytes) {
-    delete[] this->bytes;
+  if (bytes) {
+    delete[] bytes;
   }
 }
 
 char *Serial::get_bytes() const {
-  return this->bytes;
+  return bytes;
 }
 
 unsigned int Serial::get_len() const {
-  return this->len;
+  return len;
 }

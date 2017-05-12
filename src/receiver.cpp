@@ -27,27 +27,27 @@ Receiver::~Receiver() {
 }
 
 void Receiver::start() {
-  this->listen();
+  listen();
   cout << "listening..." << endl;
   while (true) {
-    this->accept();
+    accept();
   }
 }
 
 // -- private
 
 void Receiver::listen() {
-  this->sd = socket(AF_INET, SOCK_STREAM, 0);
+  sd = socket(AF_INET, SOCK_STREAM, 0);
 
-  if (this->sd < 0) {
+  if (sd < 0) {
     throw "socket";
   }
 
-  if (bind(this->sd, (struct sockaddr*)&this->addr, sizeof(this->addr)) < 0) {
+  if (bind(sd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
     throw "bind";
   }
 
-  if (::listen(this->sd, 10) < 0) {
+  if (::listen(sd, 10) < 0) {
     throw "listen";
   }
 }
@@ -55,7 +55,7 @@ void Receiver::listen() {
 void Receiver::accept() {
   struct sockaddr_in addr;
   socklen_t socklen = sizeof(addr);
-  int acc_sd = ::accept(this->sd, (struct sockaddr*)&addr, &socklen);
+  int acc_sd = ::accept(sd, (struct sockaddr*)&addr, &socklen);
 
   if (acc_sd < 0) {
     throw "accept";
@@ -68,7 +68,7 @@ void Receiver::accept() {
   }
 
   if (pid == 0) {
-    this->recv(acc_sd);
+    recv(acc_sd);
     close(acc_sd);
   }
 }

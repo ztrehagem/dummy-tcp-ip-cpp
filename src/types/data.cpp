@@ -26,18 +26,18 @@ Data::Data(const Serial *bytes) {
 }
 
 Data::~Data() {
-  delete this->payload;
+  delete payload;
 }
 
 void Data::preview() const {
-  cout << "len: " << this->payload->get_len() << endl;
-  cout << this->payload->get_bytes() << endl;
+  cout << "len: " << payload->get_len() << endl;
+  cout << payload->get_bytes() << endl;
 }
 
 Serial *Data::serialize() const {
-  return new Serial(this->payload->get_bytes(), this->payload->get_len());
+  return new Serial(payload->get_bytes(), payload->get_len());
 }
 
 string Data::to_str() {
-  return string(this->payload->get_bytes(), this->payload->get_len());
+  return string(payload->get_bytes(), payload->get_len());
 }

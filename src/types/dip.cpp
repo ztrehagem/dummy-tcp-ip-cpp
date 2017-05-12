@@ -21,18 +21,18 @@ Dip::Dip(const char *bytes, const unsigned int len) {
   this->payload = new Serial(bytes, len);
 }
 Dip::~Dip() {
-  if (this->payload) {
-    delete this->payload;
+  if (payload) {
+    delete payload;
   }
 }
 
 Serial *Dip::serialize() const {
   // concat headers
-  return new Serial(this->payload->get_bytes(), this->payload->get_len());
+  return new Serial(payload->get_bytes(), payload->get_len());
 }
 Layer2 *Dip::extract() const {
   // switch type dtcp/dudp
-  return new Dtcp(this->payload);
+  return new Dtcp(payload);
 }
 void Dip::preview() const {
 

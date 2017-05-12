@@ -16,17 +16,17 @@ Dtcp::Dtcp(const Serial *bytes) : Layer2(Layer2::DTCP) {
   this->type = 1;
 }
 Dtcp::~Dtcp() {
-  if (this->payload) {
-    delete this->payload;
+  if (payload) {
+    delete payload;
   }
 }
 
 Data *Dtcp::extract() const {
-  return new Data(this->payload);
+  return new Data(payload);
 }
 Serial *Dtcp::serialize() const {
   // concat header
-  return new Serial(this->payload->get_bytes(), this->payload->get_len());
+  return new Serial(payload->get_bytes(), payload->get_len());
 }
 void Dtcp::preview() const {
 

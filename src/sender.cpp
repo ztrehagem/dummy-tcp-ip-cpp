@@ -27,16 +27,16 @@ Sender::Sender(const char *type, const char *filename) {
 }
 
 Sender::~Sender() {
-  if (this->sd) {
-    close(this->sd);
+  if (sd) {
+    close(sd);
   }
 }
 
 void Sender::start() {
-  ifstream file(this->filename, ifstream::in);
+  ifstream file(filename, ifstream::in);
 
   if (!file.is_open()) {
-    cout << "file not found '" << this->filename << "'" << endl;
+    cout << "file not found '" << filename << "'" << endl;
     return;
   }
 
@@ -61,8 +61,8 @@ void Sender::start() {
     const unsigned int read_len = after_pos - pos;
 
     // -- make packet
-    Serial *packet = this->create_packet(buf, read_len, Layer2::DTCP);
-    this->send(packet);
+    Serial *packet = create_packet(buf, read_len, Layer2::DTCP);
+    send(packet);
     delete packet;
 
     pos = after_pos;
@@ -73,34 +73,33 @@ void Sender::start() {
 // -- private
 
 Serial *Sender::create_packet(const char* bytes, const unsigned int len, const Layer2::Type type) {
-  Data data(bytes, len);
-  Layer2 *layer2 = Layer2::build(data, type);
+  Data *data = new Data(bytes, len);
+  Layer2 *layer2 = Layer2::build(*data, type);
   Layer1 *layer1 = Layer1::build(*layer2);
   Serial *serial = layer1->serialize();
-
-  delete layer2;
   delete layer1;
-
+  delete layer2;
+  delete data;
   return serial;
 }
 
 void Sender::send(const Serial *packet) {
-  this->send(packet->get_bytes(), packet->get_len());
+  send(packet->get_bytes(), packet->get_len());
 }
 
 void Sender::send(const char *bytes, const size_t len) {
-  this->sd = ::socket(AF_INET, SOCK_STREAM, 0);
+  sd = ::socket(AF_INET, SOCK_STREAM, 0);
 
-  if (this->sd < 0) {
+  if (sd < 0) {
     throw "socket";
   }
 
 
-  if (::connect(this->sd, (struct sockaddr*)&this->addr, sizeof(this->addr))) {
+  if (::connect(sd, (struct sockaddr*)&addr, sizeof(addr))) {
     throw "connect";
   }
 
-  if (::send(this->sd, bytes, len, 0) < 0) {
+  if (::send(sd, bytes, len, 0) < 0) {
     throw "send";
   }
 }
