@@ -1,6 +1,5 @@
-#include "dip.h"
-
 #include "layer1.h"
+#include "dip.h"
 
 
 

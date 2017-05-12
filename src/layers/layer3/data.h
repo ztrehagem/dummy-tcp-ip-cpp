@@ -1,10 +1,8 @@
 #pragma once
 
 #include <string>
-#include "serial.h"
-#include "serializable.h"
-// class Layer2;
-// #include "layer2.h"
+#include "common/serial.h"
+#include "common/serializable.h"
 
 using namespace std;
 

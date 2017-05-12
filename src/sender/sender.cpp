@@ -1,17 +1,13 @@
+#include "sender.h"
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "common.h"
-#include "types/serial.h"
-#include "types/data.h"
-#include "types/layer1.h"
-#include "types/layer2.h"
-
-#include "sender.h"
+#include "common/common.h"
+#include "layers/layer3/data.h"
+#include "layers/layer1/layer1.h"
 
 using namespace std;
 

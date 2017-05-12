@@ -1,9 +1,7 @@
 #pragma once
 
-#include "serializable.h"
-// #include "layer1.h"
-#include "data.h"
-// class Layer1;
+#include "common/serializable.h"
+#include "layers/layer3/data.h"
 
 
 

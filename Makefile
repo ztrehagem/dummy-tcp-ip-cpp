@@ -137,17 +137,95 @@ client/fast:
 .PHONY : client/fast
 
 #=============================================================================
-# Target rules for targets named types
+# Target rules for targets named common
 
 # Build rule for target.
-types: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 types
-.PHONY : types
+common: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 common
+.PHONY : common
 
 # fast build rule for target.
-types/fast:
-	$(MAKE) -f src/types/CMakeFiles/types.dir/build.make src/types/CMakeFiles/types.dir/build
-.PHONY : types/fast
+common/fast:
+	$(MAKE) -f src/common/CMakeFiles/common.dir/build.make src/common/CMakeFiles/common.dir/build
+.PHONY : common/fast
+
+#=============================================================================
+# Target rules for targets named sender
+
+# Build rule for target.
+sender: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sender
+.PHONY : sender
+
+# fast build rule for target.
+sender/fast:
+	$(MAKE) -f src/sender/CMakeFiles/sender.dir/build.make src/sender/CMakeFiles/sender.dir/build
+.PHONY : sender/fast
+
+#=============================================================================
+# Target rules for targets named receiver
+
+# Build rule for target.
+receiver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 receiver
+.PHONY : receiver
+
+# fast build rule for target.
+receiver/fast:
+	$(MAKE) -f src/receiver/CMakeFiles/receiver.dir/build.make src/receiver/CMakeFiles/receiver.dir/build
+.PHONY : receiver/fast
+
+#=============================================================================
+# Target rules for targets named layers
+
+# Build rule for target.
+layers: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 layers
+.PHONY : layers
+
+# fast build rule for target.
+layers/fast:
+	$(MAKE) -f src/layers/CMakeFiles/layers.dir/build.make src/layers/CMakeFiles/layers.dir/build
+.PHONY : layers/fast
+
+#=============================================================================
+# Target rules for targets named layer1
+
+# Build rule for target.
+layer1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 layer1
+.PHONY : layer1
+
+# fast build rule for target.
+layer1/fast:
+	$(MAKE) -f src/layers/layer1/CMakeFiles/layer1.dir/build.make src/layers/layer1/CMakeFiles/layer1.dir/build
+.PHONY : layer1/fast
+
+#=============================================================================
+# Target rules for targets named layer2
+
+# Build rule for target.
+layer2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 layer2
+.PHONY : layer2
+
+# fast build rule for target.
+layer2/fast:
+	$(MAKE) -f src/layers/layer2/CMakeFiles/layer2.dir/build.make src/layers/layer2/CMakeFiles/layer2.dir/build
+.PHONY : layer2/fast
+
+#=============================================================================
+# Target rules for targets named layer3
+
+# Build rule for target.
+layer3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 layer3
+.PHONY : layer3
+
+# fast build rule for target.
+layer3/fast:
+	$(MAKE) -f src/layers/layer3/CMakeFiles/layer3.dir/build.make src/layers/layer3/CMakeFiles/layer3.dir/build
+.PHONY : layer3/fast
 
 src/client.o: src/client.cpp.o
 
@@ -175,60 +253,6 @@ src/client.s: src/client.cpp.s
 src/client.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/client.cpp.s
 .PHONY : src/client.cpp.s
-
-src/receiver.o: src/receiver.cpp.o
-
-.PHONY : src/receiver.o
-
-# target to build an object file
-src/receiver.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.o
-.PHONY : src/receiver.cpp.o
-
-src/receiver.i: src/receiver.cpp.i
-
-.PHONY : src/receiver.i
-
-# target to preprocess a source file
-src/receiver.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.i
-.PHONY : src/receiver.cpp.i
-
-src/receiver.s: src/receiver.cpp.s
-
-.PHONY : src/receiver.s
-
-# target to generate assembly for a file
-src/receiver.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/receiver.cpp.s
-.PHONY : src/receiver.cpp.s
-
-src/sender.o: src/sender.cpp.o
-
-.PHONY : src/sender.o
-
-# target to build an object file
-src/sender.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.o
-.PHONY : src/sender.cpp.o
-
-src/sender.i: src/sender.cpp.i
-
-.PHONY : src/sender.i
-
-# target to preprocess a source file
-src/sender.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.i
-.PHONY : src/sender.cpp.i
-
-src/sender.s: src/sender.cpp.s
-
-.PHONY : src/sender.s
-
-# target to generate assembly for a file
-src/sender.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/sender.cpp.s
-.PHONY : src/sender.cpp.s
 
 src/server.o: src/server.cpp.o
 
@@ -267,16 +291,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... server"
 	@echo "... client"
-	@echo "... types"
+	@echo "... common"
+	@echo "... sender"
+	@echo "... receiver"
+	@echo "... layers"
+	@echo "... layer1"
+	@echo "... layer2"
+	@echo "... layer3"
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
-	@echo "... src/receiver.o"
-	@echo "... src/receiver.i"
-	@echo "... src/receiver.s"
-	@echo "... src/sender.o"
-	@echo "... src/sender.i"
-	@echo "... src/sender.s"
 	@echo "... src/server.o"
 	@echo "... src/server.i"
 	@echo "... src/server.s"

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "layer1.h"
-#include "layer2.h"
-#include "serial.h"
+#include "layers/layer2/layer2.h"
+#include "common/serial.h"
 
 
 class Dip : public Layer1 {

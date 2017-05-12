@@ -2,8 +2,8 @@
 
 #include <string>
 #include <netinet/in.h>
-#include "common.h"
-#include "types/layer2.h"
+#include "common/serial.h"
+#include "layers/layer2/layer2.h"
 
 using namespace std;
 

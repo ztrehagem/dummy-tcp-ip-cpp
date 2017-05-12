@@ -1,8 +1,5 @@
-#include "serial.h"
-
 #include "dip.h"
-#include "dtcp.h"
-
+#include "layers/layer2/dtcp.h"
 
 
 Dip::Dip(const Layer2 &layer2, const unsigned int version, const unsigned int ttl) {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "serializable.h"
-#include "layer2.h"
+#include "common/serializable.h"
+#include "layers/layer2/layer2.h"
 
 
 

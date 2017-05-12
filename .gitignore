@@ -1,5 +1,5 @@
-client
-server
+/client
+/server
 CMakeFiles
 CMakeCache.txt
 cmake_install.cmake

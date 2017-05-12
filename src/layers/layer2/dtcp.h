@@ -1,9 +1,8 @@
 #pragma once
 
-#include "layer1.h"
 #include "layer2.h"
-#include "data.h"
-#include "serial.h"
+#include "layers/layer3/data.h"
+#include "common/serial.h"
 
 
 class Dtcp : public Layer2 {

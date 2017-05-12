@@ -1,14 +1,12 @@
+#include "receiver.h"
 #include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include "common.h"
-#include "types/data.h"
-#include "types/layer2.h"
-#include "types/dip.h"
-#include "types/layer1.h"
-
-#include "receiver.h"
+#include "common/common.h"
+#include "layers/layer3/data.h"
+#include "layers/layer2/layer2.h"
+#include "layers/layer1/dip.h"
 
 using namespace std;
 
